@@ -28,6 +28,7 @@ fi
 echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 
+git config --unset-all http."https://github.com/".extraheader || :
 echo "DISABLE LFS"
 GIT_LFS_SKIP_SMUDGE=1
 git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
@@ -41,6 +42,7 @@ else
 fi
 
 git remote add destination "$DESTINATION_REPO"
+git lfs fetch --all
 
 # Pull all branches references down locally so subsequent commands can see them
 git fetch source '+refs/heads/*:refs/heads/*' --update-head-ok
