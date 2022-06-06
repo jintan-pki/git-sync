@@ -39,4 +39,4 @@ jobs:
           push: true
           file: Dockerfile
           tags: |
-            ghcr.io/${{ github.actor }}/github-sync:${{ steps.meta.outputs.tag }}
+            ghcr.io/${{ github.actor }}/git-sync:${{ steps.meta.outputs.tag }}
