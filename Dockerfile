@@ -16,8 +16,6 @@ RUN apk --no-cache add openssl curl \
     && rm -rf git-lfs-${GITLFS_VERSION} \
     && rm -rf git-lfs-linux-amd64-v${GITLFS_VERSION}.tar.gz \
     && git lfs install --skip-smudge
-    && git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
-    && git config --global filter.lfs.process "git-lfs filter-process --skip"
 
 ADD *.sh /
 
