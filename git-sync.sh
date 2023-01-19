@@ -28,8 +28,13 @@ fi
 echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 
+# https://shuhrat.github.io/programming/git-lfs-tips-and-tricks.html
 git config --unset-all http."https://github.com/".extraheader || :
+echo "Current LFS"
+git config --list | grep "filter.lfs"
 echo "DISABLE LFS"
+git config --global filter.lfs.required true
+git config --global filter.lfs.clean "git-lfs clean -- %f"
 git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
 git config --global filter.lfs.process "git-lfs filter-process --skip"
 git lfs install --skip-smudge
@@ -44,7 +49,7 @@ fi
 
 git remote add destination "$DESTINATION_REPO"
 git lfs install --skip-smudge
-##git lfs fetch --all
+git lfs fetch --all
 
 # Pull all branches references down locally so subsequent commands can see them
 git fetch source '+refs/heads/*:refs/heads/*' --update-head-ok
