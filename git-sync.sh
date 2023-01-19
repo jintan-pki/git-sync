@@ -43,6 +43,7 @@ fi
 
 
 git remote add destination "$DESTINATION_REPO"
+git lfs install --skip-smudge
 ##git lfs fetch --all
 
 # Pull all branches references down locally so subsequent commands can see them
