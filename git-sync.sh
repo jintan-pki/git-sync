@@ -41,8 +41,9 @@ else
   git clone "$SOURCE_REPO" /root/source --origin source && cd /root/source
 fi
 
+git lfs install --skip-smudge
 git remote add destination "$DESTINATION_REPO"
-git lfs fetch --all
+#git lfs fetch --all
 
 # Pull all branches references down locally so subsequent commands can see them
 git fetch source '+refs/heads/*:refs/heads/*' --update-head-ok
