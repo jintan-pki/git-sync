@@ -38,7 +38,7 @@ git lfs install --skip-smudge
 #git config --global filter.lfs.clean "git-lfs clean -- %f"
 #git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
 #git config --global filter.lfs.process "git-lfs filter-process --skip"
-
+export GIT_LFS_SKIP_SMUDGE=1
 
 if [[ -n "$SOURCE_SSH_PRIVATE_KEY" ]]; then
   # Clone using source ssh key if provided
