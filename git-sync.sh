@@ -29,7 +29,7 @@ echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 
 git lfs install --skip-smudge
-git config lfs.allowincompletepush true
+
 ## https://shuhrat.github.io/programming/git-lfs-tips-and-tricks.html
 #git config --unset-all http."https://github.com/".extraheader || :
 #echo "Current LFS"
@@ -51,6 +51,7 @@ fi
 #git lfs install --skip-smudge
 git remote add destination "$DESTINATION_REPO"
 #git lfs fetch --all
+git config lfs.allowincompletepush true
 
 # Pull all branches references down locally so subsequent commands can see them
 git fetch source '+refs/heads/*:refs/heads/*' --update-head-ok
