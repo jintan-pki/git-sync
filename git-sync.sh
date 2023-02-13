@@ -29,7 +29,7 @@ echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 
 git lfs install --skip-smudge
-git config --global lfs.allowincompletepush true
+git config lfs.allowincompletepush true
 ## https://shuhrat.github.io/programming/git-lfs-tips-and-tricks.html
 #git config --unset-all http."https://github.com/".extraheader || :
 #echo "Current LFS"
