@@ -65,4 +65,4 @@ if [[ -n "$DESTINATION_SSH_PRIVATE_KEY" ]]; then
 fi
 
 #git lfs push --all
-git push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --progress --force
+git lfs push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --progress --force
