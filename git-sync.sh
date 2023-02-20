@@ -28,17 +28,17 @@ fi
 echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 
-#git lfs install --skip-smudge
+git lfs install --skip-smudge
 
 ## https://shuhrat.github.io/programming/git-lfs-tips-and-tricks.html
 #git config --unset-all http."https://github.com/".extraheader || :
 #echo "Current LFS"
 #git config --list | grep "filter.lfs"
 #echo "DISABLE LFS"
-#git config --global filter.lfs.required true
-#git config --global filter.lfs.clean "git-lfs clean -- %f"
-#git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
-#git config --global filter.lfs.process "git-lfs filter-process --skip"
+git config --global filter.lfs.required true
+git config --global filter.lfs.clean "git-lfs clean -- %f"
+git config --global filter.lfs.smudge "git-lfs smudge --skip -- %f"
+git config --global filter.lfs.process "git-lfs filter-process --skip"
 export GIT_LFS_SKIP_SMUDGE=1
 
 if [[ -n "$SOURCE_SSH_PRIVATE_KEY" ]]; then
@@ -50,7 +50,7 @@ fi
 
 #git lfs install --skip-smudge
 git remote add destination "$DESTINATION_REPO"
-#git lfs fetch --all
+git lfs fetch --all
 git config lfs.allowincompletepush true
 
 # Pull all branches references down locally so subsequent commands can see them
@@ -64,5 +64,5 @@ if [[ -n "$DESTINATION_SSH_PRIVATE_KEY" ]]; then
   git config --local core.sshCommand "/usr/bin/ssh -i ~/.ssh/dst_rsa"
 fi
 
-#git lfs push --all "$DESTINATION_REPO"
-git push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --force --no-verify
+#git lfs push --all "$DESTINATION_REPO" Sh*thole, cannot bypass Github pre-receive hook
+git push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --no-verify --force
