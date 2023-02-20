@@ -28,7 +28,7 @@ fi
 echo "SOURCE=$SOURCE_REPO:$SOURCE_BRANCH"
 echo "DESTINATION=$DESTINATION_REPO:$DESTINATION_BRANCH"
 
-git lfs install --skip-smudge
+#git lfs install --skip-smudge
 
 ## https://shuhrat.github.io/programming/git-lfs-tips-and-tricks.html
 #git config --unset-all http."https://github.com/".extraheader || :
@@ -64,5 +64,5 @@ if [[ -n "$DESTINATION_SSH_PRIVATE_KEY" ]]; then
   git config --local core.sshCommand "/usr/bin/ssh -i ~/.ssh/dst_rsa"
 fi
 
-git lfs push --all "$DESTINATION_REPO"
+#git lfs push --all "$DESTINATION_REPO"
 git push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --force --no-verify
