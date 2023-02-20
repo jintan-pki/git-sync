@@ -64,5 +64,5 @@ if [[ -n "$DESTINATION_SSH_PRIVATE_KEY" ]]; then
   git config --local core.sshCommand "/usr/bin/ssh -i ~/.ssh/dst_rsa"
 fi
 
-git lfs push origin --al
+git lfs push origin --all
 git push destination "${SOURCE_BRANCH}:${DESTINATION_BRANCH}" --progress --force
